@@ -3,14 +3,16 @@
 
 #include "model.h"
 
+auto m_spm = std::make_shared<Model>("m_spm");
+
 std::shared_ptr<Model> fooReturnSharedPtr() {
     return std::make_shared<Model>("spm1");
 }
 
-// std::weak_ptr<Model> fooReturnWeakPtr1() {
-//     std::weak_ptr<Model> wpm(m_spm);
-//     return wpm;
-// }
+std::weak_ptr<Model> fooReturnWeakPtr1() {
+    std::weak_ptr<Model> wpm(m_spm);
+    return wpm;
+}
 
 std::weak_ptr<Model> fooReturnWeakPtr2() {
     auto spm = std::make_shared<Model>("spm2");
@@ -23,11 +25,16 @@ std::unique_ptr<Model> fooReturnUniquePtr() {
 }
 
 void testReturnSmartPtrs() {
+    std::cout << std::endl;
+
     auto spm = fooReturnSharedPtr();
-    // auto wpm1 = fooReturnWeakPtr1();
-    // qDebug() << wpm1.expired();
+
+    auto wpm1 = fooReturnWeakPtr1();
+    std::cout << "wpm1.expired = " << wpm1.expired() << std::endl;
+
     auto wpm2 = fooReturnWeakPtr2();
-    std::cout << wpm2.expired();
+    std::cout << "wpm2.expired = " << wpm2.expired() << std::endl;
+    
     auto upm = fooReturnUniquePtr();
 }
 
