@@ -15,7 +15,7 @@ void fooWeakPtrTest(std::weak_ptr<Model> wpm) {
     std::weak_ptr<Model> wpm2 = wpm;
     std::cout << "wpm.useCount = " << wpm.use_count() << std::endl;
     std::cout << "wpm2.useCount = " << wpm2.use_count() << std::endl;
-    
+
     std::cout << std::endl;
 }
 
@@ -55,7 +55,8 @@ void testPassSmartPointers(){
     std::cout << upm1.get()->details("unique before fooUniquePtrTest") << std::endl;
     fooUniquePtrTest(std::move(upm1));
     // will cause crash, unique ptr should not be accesed after move
-    // qDebug() << upm1.get()->details("unique after fooUniquePtrTest");
+    // std::cout << upm1.get()->details("unique after fooUniquePtrTest");
+    
 };
 
 #endif // TESTPASSSMARTPOINTERS_H

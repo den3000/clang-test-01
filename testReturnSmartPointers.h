@@ -44,7 +44,7 @@ void testReturnSmartPtrs() {
         std::cout << "wpm2 expired" << std::endl;
     }
 
-    auto upm = fooReturnUniquePtr();
+    auto upm1 = fooReturnUniquePtr();
 }
 
 #endif // TESTRETURNSMARTPOINTERS_H
