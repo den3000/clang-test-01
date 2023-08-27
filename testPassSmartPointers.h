@@ -11,6 +11,12 @@ void fooSharedPtrTest(std::shared_ptr<Model> spm) {
 void fooWeakPtrTest(std::weak_ptr<Model> wpm) {
     std::cout << "wpm.useCount = " << wpm.use_count() << std::endl;
     std::cout << wpm.lock().get()->details("weak") << std::endl;
+
+    std::weak_ptr<Model> wpm2 = wpm;
+    std::cout << "wpm.useCount = " << wpm.use_count() << std::endl;
+    std::cout << "wpm2.useCount = " << wpm2.use_count() << std::endl;
+    
+    std::cout << std::endl;
 }
 
 void fooUniquePtrTest(std::unique_ptr<Model> upm) {
@@ -34,10 +40,10 @@ void testPassSmartPointers(){
     auto spm4 = std::make_shared<Model>("spm4");
     std::weak_ptr<Model> wpm4(spm4);
 
-    std::cout << "spm4.useCount = " << spm1.use_count() << std::endl;
+    std::cout << "spm4.useCount = " << spm4.use_count() << std::endl;
     std::cout << "wpm4.useCount = " << wpm4.use_count() << std::endl;
     fooWeakPtrTest(wpm4);
-    std::cout << "spm4.useCount = " << spm1.use_count() << std::endl;
+    std::cout << "spm4.useCount = " << spm4.use_count() << std::endl;
     std::cout << "wpm4.useCount = " << wpm4.use_count() << std::endl;
 
     // unique
