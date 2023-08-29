@@ -57,9 +57,64 @@ void constSyntax() {
 
 }
 
+void fooPtrsSizesAndAdrs2(Model * pModel) {
+    cout << endl;
+    cout << "fooPtrsSizesAndAdrs2" << endl;
+
+    cout << "size of pModel: " << sizeof(pModel) << endl;
+    cout << "pModel value: " << pModel << endl;
+    cout << "addr of pModel: " << &(pModel) << endl;
+}
+
+void fooPtrsSizesAndAdrs() {
+    cout << endl;
+    cout << "fooPtrsSizesAndAdrs" << endl;
+
+    // ==== int ====
+    cout << endl;
+    cout << "==== int ====" << endl;
+    int x = 10;
+    cout << "size of x: " << sizeof(x) << endl;
+    cout << "addr of x: " << &x << endl;
+
+    int * px = &x;
+    cout << "size of px: " << sizeof(px) << endl;
+    cout << "px value: " << px << endl;
+    cout << "addr of px: " << &px << endl;
+
+    // ==== string ====
+    cout << endl;
+    cout << "==== string ====" << endl;
+    string str = "Some really really long text";
+    cout << "size of str: " << sizeof(str) << endl;
+    cout << "addr of str: " << &str << endl;
+
+    string * pStr = &str;
+    cout << "size of pStr: " << sizeof(pStr) << endl;
+    cout << "pStr value: " << pStr << endl;
+    cout << "addr of pStr: " << &pStr << endl;
+
+    // ==== model ====
+    cout << endl;
+    cout << "==== model ====" << endl;
+    Model model("some model");
+    cout << "size of model: " << sizeof(model) << endl;
+    cout << "addr of model: " << &model << endl;
+
+    Model * pModel = &model;
+    cout << "size of pModel: " << sizeof(pModel) << endl;
+    cout << "pModel value: " << pModel << endl;
+    cout << "addr of pModel: " << &pModel << endl;
+
+    fooPtrsSizesAndAdrs2(pModel);
+    
+    cout << endl;
+}
+
 void testPtrsAndRefs() {
     ptrsAndRefsBasicSyntax();
     constSyntax(); 
+    fooPtrsSizesAndAdrs();
 }
 
 #endif // TESTPTRSANDREFS_H
