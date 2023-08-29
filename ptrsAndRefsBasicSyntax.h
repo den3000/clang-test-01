@@ -1,32 +1,32 @@
-#include <iostream>
-#include <string>
+#ifndef PTRSANDREFSBASICSYNTAX_H
+#define PTRSANDREFSBASICSYNTAX_H
 
 #include "model.h"
 
 void ptrsAndRefsBasicSyntax() {
     // creating a model on a stack
-    std::cout << "Creating a model on a stack"<< std::endl;
+    cout << "Creating a model on a stack"<< endl;
     Model model("some model");
-    std::cout << "model by value: " << model.details() << std::endl << std::endl;
+    cout << "model by value: " << model.details() << endl << endl;
 
     // creating a reference to tha str
-    std::cout << "Creating a ref to a model on a stack"<< std::endl;
+    cout << "Creating a ref to a model on a stack"<< endl;
     Model & modelRef = model;
-    std::cout << "str by ref: " << modelRef.details() << std::endl << std::endl;
+    cout << "str by ref: " << modelRef.details() << endl << endl;
 
     // taking the addr of model to create a pointer
-    std::cout << "Taking an addr of a model on a stack to create a pointer"<< std::endl;
+    cout << "Taking an addr of a model on a stack to create a pointer"<< endl;
     Model * modelPtr = &(model);
-    std::cout << "addr of this model on a stack: " << modelPtr << std::endl;
-    std::cout << "accessing to model function by ptr syntax: " << modelPtr->details() << std::endl;
-    std::cout << "accessing to model function by dereferencing: " << (*(modelPtr)).details() << std::endl << std::endl;
+    cout << "addr of this model on a stack: " << modelPtr << endl;
+    cout << "accessing to model function by ptr syntax: " << modelPtr->details() << endl;
+    cout << "accessing to model function by dereferencing: " << (*(modelPtr)).details() << endl << endl;
 
     // creating a string on a heap with pointer syntax
-    std::cout << "Creating a model on a heap with pointer syntax" << std::endl;
+    cout << "Creating a model on a heap with pointer syntax" << endl;
     Model * modelPtr2 = new Model("one more string");
-    std::cout << "addr of a model on a heap: " << modelPtr2 << std::endl;
-    std::cout << "accessing to model function by ptr syntax: " << modelPtr2->details() << std::endl;
-    std::cout << "accessing to model function by dereferencing: " << (*(modelPtr2)).details() << std::endl << std::endl;
+    cout << "addr of a model on a heap: " << modelPtr2 << endl;
+    cout << "accessing to model function by ptr syntax: " << modelPtr2->details() << endl;
+    cout << "accessing to model function by dereferencing: " << (*(modelPtr2)).details() << endl << endl;
 
     // cleaning up memory
     delete modelPtr2;

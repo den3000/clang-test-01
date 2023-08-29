@@ -3,59 +3,59 @@
 
 #include "model.h"
 
-void fooSharedPtrTest(std::shared_ptr<Model> spm) {
-    std::cout << "spm.useCount = " << spm.use_count() << std::endl;
-    std::cout << spm.get()->details("shared") << std::endl;
+void fooSharedPtrTest(shared_ptr<Model> spm) {
+    cout << "spm.useCount = " << spm.use_count() << endl;
+    cout << spm.get()->details("shared") << endl;
 }
 
-void fooWeakPtrTest(std::weak_ptr<Model> wpm) {
-    std::cout << "wpm.useCount = " << wpm.use_count() << std::endl;
-    std::cout << wpm.lock().get()->details("weak") << std::endl;
+void fooWeakPtrTest(weak_ptr<Model> wpm) {
+    cout << "wpm.useCount = " << wpm.use_count() << endl;
+    cout << wpm.lock().get()->details("weak") << endl;
 
-    std::weak_ptr<Model> wpm2 = wpm;
-    std::cout << "wpm.useCount = " << wpm.use_count() << std::endl;
-    std::cout << "wpm2.useCount = " << wpm2.use_count() << std::endl;
+    weak_ptr<Model> wpm2 = wpm;
+    cout << "wpm.useCount = " << wpm.use_count() << endl;
+    cout << "wpm2.useCount = " << wpm2.use_count() << endl;
 
-    std::cout << std::endl;
+    cout << endl;
 }
 
-void fooUniquePtrTest(std::unique_ptr<Model> upm) {
-    std::cout << upm.get()->details("unique") << std::endl;
+void fooUniquePtrTest(unique_ptr<Model> upm) {
+    cout << upm.get()->details("unique") << endl;
 }
 
-void testPassSmartPointers(){
+void testPassSmartPointers() {
     // shared
-    std::cout << std::endl;
-    auto spm1 = std::make_shared<Model>("spm1");
-    auto spm2 = std::shared_ptr<Model>(new Model("spm2"));
-    std::shared_ptr<Model> spm3(new Model("spm3"));
+    cout << endl;
+    auto spm1 = make_shared<Model>("spm1");
+    auto spm2 = shared_ptr<Model>(new Model("spm2"));
+    shared_ptr<Model> spm3(new Model("spm3"));
 
-    std::cout << std::endl;
-    std::cout << "spm1.useCount = " << spm1.use_count() << std::endl;
+    cout << endl;
+    cout << "spm1.useCount = " << spm1.use_count() << endl;
     fooSharedPtrTest(spm1);
-    std::cout << "spm1.useCount = " << spm1.use_count() << std::endl;
+    cout << "spm1.useCount = " << spm1.use_count() << endl;
 
     // weak
-    std::cout << std::endl;
-    auto spm4 = std::make_shared<Model>("spm4");
-    std::weak_ptr<Model> wpm4(spm4);
+    cout << endl;
+    auto spm4 = make_shared<Model>("spm4");
+    weak_ptr<Model> wpm4(spm4);
 
-    std::cout << "spm4.useCount = " << spm4.use_count() << std::endl;
-    std::cout << "wpm4.useCount = " << wpm4.use_count() << std::endl;
+    cout << "spm4.useCount = " << spm4.use_count() << endl;
+    cout << "wpm4.useCount = " << wpm4.use_count() << endl;
     fooWeakPtrTest(wpm4);
-    std::cout << "spm4.useCount = " << spm4.use_count() << std::endl;
-    std::cout << "wpm4.useCount = " << wpm4.use_count() << std::endl;
+    cout << "spm4.useCount = " << spm4.use_count() << endl;
+    cout << "wpm4.useCount = " << wpm4.use_count() << endl;
 
     // unique
-    std::cout << std::endl;
-    auto upm1 = std::make_unique<Model>("upm1");
-    auto upm2 = std::unique_ptr<Model>(new Model("upm2"));
-    std::unique_ptr<Model> upm3(new Model("upm3"));
+    cout << endl;
+    auto upm1 = make_unique<Model>("upm1");
+    auto upm2 = unique_ptr<Model>(new Model("upm2"));
+    unique_ptr<Model> upm3(new Model("upm3"));
 
-    std::cout << upm1.get()->details("unique before fooUniquePtrTest") << std::endl;
-    fooUniquePtrTest(std::move(upm1));
+    cout << upm1.get()->details("unique before fooUniquePtrTest") << endl;
+    fooUniquePtrTest(move(upm1));
     // will cause crash, unique ptr should not be accesed after move
-    // std::cout << upm1.get()->details("unique after fooUniquePtrTest");
+    // cout << upm1.get()->details("unique after fooUniquePtrTest");
     
 };
 

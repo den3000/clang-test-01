@@ -1,48 +1,47 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <iostream>
-#include <string>
+#include "easy_import.h"
 
 class Model {
 public:
-    std::string m_tag;
-    std::string m_cnstr;
+    string m_tag;
+    string m_cnstr;
 
     explicit Model()
     : m_tag {"default"}
     , m_cnstr {"no args"}
     {
-        std::cout << details("DEF cnstr") << std::endl;
+        cout << details("DEF cnstr") << endl;
     };
 
-    explicit Model(std::string tag)
-    : m_tag { std::move(tag) } 
+    explicit Model(string tag)
+    : m_tag { move(tag) } 
     , m_cnstr {"with arg"}
     {
-        std::cout << details("ARG cnstr") << std::endl;
+        cout << details("ARG cnstr") << endl;
     };
 
     // if explicit then won't compile on arg passing
     Model(Model const & other)
-    : m_tag { std::move(other.m_tag) }
+    : m_tag { move(other.m_tag) }
     , m_cnstr {"copy"}
     {
-        std::cout << details("COPY cnstr") << std::endl;
+        cout << details("COPY cnstr") << endl;
     }
 
     Model(Model && other)
-    : m_tag { std::move(other.m_tag) }
+    : m_tag { move(other.m_tag) }
     , m_cnstr {"move"}
     {
-        std::cout << details("MOVE cnstr") << std::endl;
+        cout << details("MOVE cnstr") << endl;
     }
 
     ~Model() { 
-        std::cout << details("Dsstr") << std::endl;
+        cout << details("Dsstr") << endl;
     };
 
-    std::string details(std::string && topic = "") const {
+    string details(string && topic = "") const {
         return topic
                 .append(" tag: ")
                 .append(m_tag)
