@@ -31,3 +31,30 @@ void ptrsAndRefsBasicSyntax() {
     // cleaning up memory
     delete modelPtr2;
 }
+
+Model foo() {
+    return Model("some model");
+}
+
+void constSyntax() {
+    const Model model("some model");
+    auto t1 = model.m_tag;
+    auto d1 = model.details();
+    // model.m_tag = "new tag";
+    
+    const Model & modelRef = model;
+    auto t2 = modelRef.m_tag;
+    auto d2 = model.details();
+    // modelRef.m_tag = "new tag";
+
+    const Model * modelPtr = &(model);
+    auto t3 = modelPtr->m_tag;
+    auto d3 = model.details();
+    // modelPtr->m_tag = "new tag";
+
+    Model model1("some model");
+    Model && model1Rvref = foo();
+
+}
+
+#endif // PTRSANDREFSBASICSYNTAX_H
