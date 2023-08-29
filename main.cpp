@@ -1,12 +1,10 @@
-#include "ptrsAndRefsBasicSyntax.h"
+#include "testPtrsAndRefs.h"
 #include "testPassSmartPointers.h"
 #include "testReturnSmartPointers.h"
 
 int main()
 {
-    ptrsAndRefsBasicSyntax();
-    constSyntax();
-
+    testPtrsAndRefs();
     testPassSmartPointers();
     testReturnSmartPtrs();
 }

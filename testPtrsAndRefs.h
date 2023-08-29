@@ -1,5 +1,5 @@
-#ifndef PTRSANDREFSBASICSYNTAX_H
-#define PTRSANDREFSBASICSYNTAX_H
+#ifndef TESTPTRSANDREFS_H
+#define TESTPTRSANDREFS_H
 
 #include "model.h"
 
@@ -57,4 +57,9 @@ void constSyntax() {
 
 }
 
-#endif // PTRSANDREFSBASICSYNTAX_H
+void testPtrsAndRefs() {
+    ptrsAndRefsBasicSyntax();
+    constSyntax(); 
+}
+
+#endif // TESTPTRSANDREFS_H
