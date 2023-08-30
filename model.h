@@ -3,6 +3,9 @@
 
 #include "easy_import.h"
 
+#include <ostream>
+using std::ostream;
+
 class Model {
 public:
     string m_tag;
@@ -47,6 +50,11 @@ public:
                 .append(m_tag)
                 .append(" cnstr: ")
                 .append(m_cnstr);
+    }
+
+    friend ostream& operator<<(ostream& os, Model & m) {
+        os << m.details();
+        return os;
     }
 };
 
