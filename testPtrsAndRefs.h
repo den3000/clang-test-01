@@ -57,19 +57,19 @@ void constSyntax() {
 
 }
 
-void fooPtrsSizesAndAdrs2(Model model) {
-    cout << "fooPtrsSizesAndAdrs2" << endl;
+void fooPtrsSizesAndAdrsByVal(Model model) {
+    cout << "fooPtrsSizesAndAdrsByVal" << endl;
 
     cout << "value of model: " << model << endl;
     cout << "size of model: " << sizeof(model) << endl;
     cout << "addr of model: " << &model << endl;
 }
 
-void fooPtrsSizesAndAdrs3(Model * pModel) {
-    cout << "fooPtrsSizesAndAdrs3" << endl;
+void fooPtrsSizesAndAdrsByPtr(Model * pModel) {
+    cout << "fooPtrsSizesAndAdrsByPtr" << endl;
 
     cout << "value of pModel: " << pModel << endl;
-    cout << "dereferenced value of pModel: " << *pModel << endl;
+    cout << "de-refed value of pModel: " << *pModel << endl;
     cout << "size of pModel: " << sizeof(pModel) << endl;
     cout << "addr of pModel: " << &pModel << endl;
 }
@@ -121,28 +121,28 @@ void fooPtrsSizesAndAdrs() {
     cout << "addr of pModel: " << &pModel << endl;
 
     cout << endl;
-    fooPtrsSizesAndAdrs2(model);
+    fooPtrsSizesAndAdrsByVal(model);
     cout << endl;
-    fooPtrsSizesAndAdrs2(*pModel);
+    fooPtrsSizesAndAdrsByVal(*pModel);
 
     cout << endl;
-    fooPtrsSizesAndAdrs3(&model);
+    fooPtrsSizesAndAdrsByPtr(&model);
     cout << endl;
-    fooPtrsSizesAndAdrs3(pModel);
+    fooPtrsSizesAndAdrsByPtr(pModel);
     
     cout << endl;
 }
 
-void fooRefsSizesAndAdrs2(Model model) {
-    cout << "fooRefsSizesAndAdrs2" << endl;
+void fooRefsSizesAndAdrsByVal(Model model) {
+    cout << "fooRefsSizesAndAdrsByVal" << endl;
 
     cout << "value of model: " << model << endl;
     cout << "size of model: " << sizeof(model) << endl;
     cout << "addr of model: " << &model << endl;
 }
 
-void fooRefsSizesAndAdrs3(Model & rModel) {
-    cout << "fooRefsSizesAndAdrs3" << endl;
+void fooRefsSizesAndAdrsByRef(Model & rModel) {
+    cout << "fooRefsSizesAndAdrsByRef" << endl;
 
     cout << "value of rModel: " << rModel << endl;
     cout << "size of rModel: " << sizeof(rModel) << endl;
@@ -193,14 +193,14 @@ void fooRefsSizesAndAdrs() {
     cout << "addr of rModel: " << &rModel << endl;
 
     cout << endl;
-    fooRefsSizesAndAdrs2(model);
+    fooRefsSizesAndAdrsByVal(model);
     cout << endl;
-    fooRefsSizesAndAdrs2(rModel);
+    fooRefsSizesAndAdrsByVal(rModel);
 
     cout << endl;
-    fooRefsSizesAndAdrs3(model);
+    fooRefsSizesAndAdrsByRef(model);
     cout << endl;
-    fooRefsSizesAndAdrs3(rModel);
+    fooRefsSizesAndAdrsByRef(rModel);
     
     cout << endl;
 }
