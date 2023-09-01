@@ -31,14 +31,14 @@ public:
     , m_cnstr {"copy"}
     {
         cout << details("COPY cnstr") << endl;
-    }
+    };
 
     Model(Model && other)
     : m_tag { move(other.m_tag) }
     , m_cnstr {"move"}
     {
         cout << details("MOVE cnstr") << endl;
-    }
+    };
 
     ~Model() { 
         cout << details("Dsstr") << endl;
@@ -50,12 +50,16 @@ public:
                 .append(m_tag)
                 .append(" cnstr: ")
                 .append(m_cnstr);
-    }
+    };
+
+    void fakeUpdate() {
+        // just some non-const function for demo purpose
+    };
 
     friend ostream& operator<<(ostream& os, Model & m) {
         os << m.details();
         return os;
-    }
+    };
 };
 
 #endif // MODEL_H

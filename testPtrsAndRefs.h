@@ -154,34 +154,9 @@ void fooRefsSizesAndAdrs() {
     cout << endl;
 }
 
-Model constSyntaxFoo() {
-    return Model("some model");
-}
-
-void constSyntax() {
-    const Model model("some model");
-    auto t1 = model.m_tag;
-    auto d1 = model.details();
-    // model.m_tag = "new tag";
-    
-    const Model & modelRef = model;
-    auto t2 = modelRef.m_tag;
-    auto d2 = model.details();
-    // modelRef.m_tag = "new tag";
-
-    const Model * modelPtr = &(model);
-    auto t3 = modelPtr->m_tag;
-    auto d3 = model.details();
-    // modelPtr->m_tag = "new tag";
-
-    Model model1("some model");
-    Model && model1Rvref = constSyntaxFoo();
-}
-
 void testPtrsAndRefs() {
     fooPtrsSizesAndAdrs();
     fooRefsSizesAndAdrs();
-    constSyntax(); 
     ptrsAndRefsBasicSyntax();
 }
 
@@ -192,7 +167,7 @@ void ptrsAndRefsBasicSyntax() {
     Model model("some model");
     cout << "model by value: " << model.details() << endl << endl;
 
-    // creating a reference to tha str
+    // creating a reference to that model
     cout << "Creating a ref to a model on a stack"<< endl;
     Model & modelRef = model;
     cout << "str by ref: " << modelRef.details() << endl << endl;
@@ -204,7 +179,7 @@ void ptrsAndRefsBasicSyntax() {
     cout << "accessing to model function by ptr syntax: " << modelPtr->details() << endl;
     cout << "accessing to model function by dereferencing: " << (*(modelPtr)).details() << endl << endl;
 
-    // creating a string on a heap with pointer syntax
+    // creating a model on a heap with pointer syntax
     cout << "Creating a model on a heap with pointer syntax" << endl;
     Model * modelPtr2 = new Model("one more string");
     cout << "addr of a model on a heap: " << modelPtr2 << endl;
