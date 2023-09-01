@@ -35,7 +35,7 @@ void testConstPtrs() {
     Model modelNonConst1("tagNonConst1");
     const Model modelConst1("tagConst1");
 
-    // 1. non const pointer to const
+    // ============== 1. non const pointer to const ============== 
     // from non const
     const Model * pToConst1 = &(modelNonConst);
     // from const
@@ -58,7 +58,7 @@ void testConstPtrs() {
     // pToConst2->m_tag = "new tag";
     // pToConst2->fakeUpdate();
 
-    // 2. const pointer to non const
+    // ============== 2. const pointer to non const ============== 
     Model *const cpToNonConst1 = &(modelNonConst);
 
     // won't compile: can't create const pointer to non const from const variable
@@ -74,7 +74,7 @@ void testConstPtrs() {
     cpToNonConst1->m_tag = "new tag";
     cpToNonConst1->fakeUpdate();
 
-    // 3. const pointer to const
+    // ============== 3. const pointer to const ============== 
     // from non const
     const Model *const cpToConst1 = &(modelNonConst);
     // from const
@@ -100,11 +100,32 @@ void testConstPtrs() {
 };
 
 void testConstRefs() {
-    const Model model("some model");
-    const Model & modelRef = model;
-    auto t2 = modelRef.m_tag;
-    auto d2 = model.details();
-    // modelRef.m_tag = "new tag";
+    Model modelNonConst("tagNonConst");
+    const Model modelConst("tagConst");
+
+    Model modelNonConst1("tagNonConst1");
+    const Model modelConst1("tagConst1");
+
+    const Model & refToConst1 = modelNonConst;
+    const Model & refToConst2 = modelConst;
+
+    // both can't be reassigned
+    // won't compile: refrences created only once and can't be reassigned in any case
+    // refToConst1 = modelNonConst1;
+    // refToConst2 = modelConst1;
+
+    // both allows read-only access to underlying object 
+    auto t1 = refToConst1.m_tag;
+    auto d1 = refToConst1.details();    
+    auto t2 = refToConst2.m_tag;
+    auto d2 = refToConst2.details();    
+
+    // both fails to access underlying objects for write
+    // won't compile 
+    // refToConst1.m_tag = "new tag";
+    // refToConst1.fakeUpdate();
+    // refToConst2.m_tag = "new tag";
+    // refToConst2.fakeUpdate();
 };
 
 #endif // TESTCONSTSS_H
