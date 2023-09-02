@@ -15,6 +15,9 @@ using std::unique_ptr;
 using std::make_unique;
 using std::weak_ptr;
 
+using std::move;
+using std::forward;
+
 using std::string;
 using std::optional;
 
