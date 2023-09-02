@@ -3,30 +3,28 @@
 
 #include "model.h"
 
-void testLifecycleByVal(Model model);
-void testLifecycleByPtr(Model * model);
-void testLifecycleByRef(Model & model);
-
 void testLifecycle() {
-    cout << "testLifecycle" << endl;
+    cout << "testLifecycle start" << endl;
 
-    Model model("tag");
+    Model("tag0");
+    cout << endl;
 
-    testLifecycleByVal(model);
-    testLifecycleByPtr(&model);
-    testLifecycleByRef(model);
-}
+    Model model1("tag1");
+    Model model2 = Model("tag2");
+    cout << endl;
 
-void testLifecycleByVal(Model model) {
+    Model model3("tag3");
+    Model & rModel3 = model3;
+    // Model & rMode4 = Model("tag4");
+    Model const & rModel5 = Model("tag5");
+    cout << endl;
 
-}
+    Model model6("tag6");
+    Model * pModel6 = &model6;
+    // Model * pModel7 = &(Model("tag7"));
+    cout << endl;
 
-void testLifecycleByPtr(Model * model) {
-
-}
-
-void testLifecycleByRef(Model & model) {
-
+    cout << endl << "testLifecycle end" << endl;
 }
 
 
