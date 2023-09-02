@@ -3,7 +3,39 @@
 
 #include "model.h"
 
+void testPassToFunctioinByVal();
+void testPassToFunctioinByPtr();
+void testPassToFunctioinByRef();
+
+void testReturnFromFunctioinByVal(); 
+void testReturnFromFunctioinByRef(); 
+void testReturnFromFunctioinByPtr(); 
+
 void testPassToAndReturnFromFunctioin() {
+
+}
+
+void testPassToFunctioinByVal() {
+
+}
+
+void testPassToFunctioinByPtr() {
+
+}
+
+void testPassToFunctioinByRef() {
+
+}
+
+void testReturnFromFunctioinByVal() {
+
+}
+
+void testReturnFromFunctioinByRef() {
+
+}
+
+void testReturnFromFunctioinByPtr() {
 
 }
 
