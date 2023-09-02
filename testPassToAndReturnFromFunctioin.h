@@ -1,0 +1,11 @@
+#ifndef TESTPASSTOANDRETURNFROMFUNCTIOIN_H
+#define TESTPASSTOANDRETURNFROMFUNCTIOIN_H
+
+#include "model.h"
+
+void testPassToAndReturnFromFunctioin() {
+
+}
+
+
+#endif // TESTPASSTOANDRETURNFROMFUNCTIOIN_H
