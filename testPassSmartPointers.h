@@ -59,4 +59,18 @@ void testPassSmartPointers() {
     
 };
 
+    // Model m("tag0");
+    // cout << "size of m: " << sizeof(m) << endl;
+    // Model * pM = &m;
+    // cout << "size of ptr: " << sizeof(pM) << endl;
+    
+    // auto sM = make_shared<Model>("tag1");
+    // cout << "size of shared_ptr: " << sizeof(sM) << endl;
+
+    // weak_ptr<Model> wM = sM;
+    // cout << "size of weak_ptr: " << sizeof(wM) << endl;
+
+    // auto uM = make_unique<Model>("tag2");
+    // cout << "size of unique_ptr: " << sizeof(uM) << endl;
+
 #endif // TESTPASSSMARTPOINTERS_H
