@@ -14,7 +14,7 @@ void testConsts() {
 }
 
 void testConstVars() {
-    const Model model("tag");
+    Model const model("tag");
     auto t = model.m_tag;
     auto d = model.details();
 
@@ -30,16 +30,16 @@ void testConstVars() {
 
 void testConstPtrs() {
     Model modelNonConst("tagNonConst");
-    const Model modelConst("tagConst");
+    Model const modelConst("tagConst");
 
     Model modelNonConst1("tagNonConst1");
-    const Model modelConst1("tagConst1");
+    Model const modelConst1("tagConst1");
 
     // ============== 1. non const pointer to const ============== 
     // from non const
-    const Model * pToConst1 = &(modelNonConst);
+    Model const * pToConst1 = &(modelNonConst);
     // from const
-    const Model * pToConst2 = &(modelConst);
+    Model const * pToConst2 = &(modelConst);
 
     // both might be re-assigned
     pToConst1 = &(modelConst1);
@@ -59,7 +59,7 @@ void testConstPtrs() {
     // pToConst2->fakeUpdate();
 
     // ============== 2. const pointer to non const ============== 
-    Model *const cpToNonConst1 = &(modelNonConst);
+    Model * const cpToNonConst1 = &(modelNonConst);
 
     // won't compile: can't create const pointer to non const from const variable
     // Model *const cpToNonConst2 = &(modelConst);
@@ -76,9 +76,9 @@ void testConstPtrs() {
 
     // ============== 3. const pointer to const ============== 
     // from non const
-    const Model *const cpToConst1 = &(modelNonConst);
+    Model const * const cpToConst1 = &(modelNonConst);
     // from const
-    const Model *const cpToConst2 = &(modelConst);
+    Model const * const cpToConst2 = &(modelConst);
 
     // none of them  might be re-assigned
     // won't compile: you can't re-assign const pointer
@@ -101,13 +101,13 @@ void testConstPtrs() {
 
 void testConstRefs() {
     Model modelNonConst("tagNonConst");
-    const Model modelConst("tagConst");
+    Model const modelConst("tagConst");
 
     Model modelNonConst1("tagNonConst1");
-    const Model modelConst1("tagConst1");
+    Model const modelConst1("tagConst1");
 
-    const Model & refToConst1 = modelNonConst;
-    const Model & refToConst2 = modelConst;
+    Model const & refToConst1 = modelNonConst;
+    Model const & refToConst2 = modelConst;
 
     // both can't be reassigned
     // won't compile: refrences created only once and can't be reassigned in any case
