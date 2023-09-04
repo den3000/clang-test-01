@@ -24,6 +24,15 @@ void testLifecycle() {
     // Model * pModel7 = &(Model("tag7"));
     cout << endl;
 
+    Model && rvModel8 = Model("tag8");
+    Model model9("tag9");
+    // Model && rvModel9 = model9;
+    Model && rvModel9 = move(model9);
+
+    Model model10("tag10");
+    Model const && rvModel10 = move(model10); 
+    Model const && rvModel11 = Model("tag11"); 
+
     cout << endl << "testLifecycle end" << endl;
 }
 
